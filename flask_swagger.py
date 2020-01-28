@@ -7,10 +7,10 @@ we add the endpoint to swagger specification output
 
 """
 import inspect
-import yaml
 import re
-
 from collections import defaultdict
+
+import yaml
 
 
 def _sanitize(comment):
@@ -163,7 +163,7 @@ def swagger(app, prefix=None, process_doc=_sanitize,
     ignore_verbs = {"HEAD", "OPTIONS"}
     # technically only responses is non-optional
     optional_fields = ['tags', 'consumes', 'produces', 'schemes', 'security',
-                       'deprecated', 'operationId', 'externalDocs']
+                       'deprecated', 'operationId', 'externalDocs', 'requestBody']
 
     for rule in app.url_map.iter_rules():
         if prefix and rule.rule[:len(prefix)] != prefix:
